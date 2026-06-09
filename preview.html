@@ -1,0 +1,887 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Olha Sashchuk — Full-Stack Developer in Copenhagen building reliable TypeScript products across frontend, APIs, and databases." />
+  <meta name="author" content="Olha Sashchuk" />
+  <meta property="og:title" content="Olha Sashchuk — Full-Stack Developer" />
+  <meta property="og:description" content="Production-minded full-stack developer focused on TypeScript, Vue, React, Node.js, PostgreSQL, and trustworthy user workflows." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#101010" />
+  <title>Olha Sashchuk — Full-Stack Developer</title>
+  <style>
+    :root {
+      --bg: #f4f1eb;
+      --paper: #fffaf0;
+      --ink: #111111;
+      --muted: #6f6a61;
+      --line: rgba(17, 17, 17, 0.14);
+      --soft-line: rgba(17, 17, 17, 0.08);
+      --accent: #c96f32;
+      --accent-dark: #8e461f;
+      --chip: rgba(17, 17, 17, 0.055);
+      --shadow: 0 24px 80px rgba(17, 17, 17, 0.08);
+      --radius: 28px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: light;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(201, 111, 50, 0.16), transparent 34rem),
+        linear-gradient(135deg, rgba(255,255,255,0.55) 0 1px, transparent 1px 100%),
+        var(--bg);
+      background-size: auto, 26px 26px, auto;
+      line-height: 1.5;
+      text-rendering: geometricPrecision;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(201, 111, 50, 0.45);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(244, 241, 235, 0.78);
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 74px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      background: var(--paper);
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .navlinks a {
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .navlinks a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 220ms ease;
+    }
+
+    .navlinks a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .hero {
+      min-height: calc(100svh - 74px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 42px;
+      align-items: end;
+      padding: 72px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 720;
+      margin-bottom: 18px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      background: #3f8f5d;
+      border-radius: 999px;
+      box-shadow: 0 0 0 6px rgba(63, 143, 93, 0.12);
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 880px;
+      font-size: clamp(56px, 9vw, 132px);
+      line-height: 0.88;
+      letter-spacing: -0.085em;
+      font-weight: 820;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      margin: 30px 0 0;
+      color: #2a2825;
+      font-size: clamp(18px, 2vw, 24px);
+      line-height: 1.34;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-weight: 720;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .button.primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button:not(.primary):hover {
+      background: var(--paper);
+    }
+
+    .sidecard {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 250, 240, 0.62);
+      box-shadow: var(--shadow);
+    }
+
+    .availability {
+      display: grid;
+      gap: 14px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 760;
+    }
+
+    .meta-value {
+      margin: 4px 0 0;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+      font-weight: 760;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--soft-line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-list a:hover { color: var(--ink); }
+
+    .section {
+      padding: 78px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 54px;
+    }
+
+    .section-title {
+      margin: 0;
+      position: sticky;
+      top: 104px;
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(28px, 4.6vw, 58px);
+      line-height: 0.98;
+      letter-spacing: -0.066em;
+      font-weight: 800;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      background: rgba(255, 250, 240, 0.52);
+    }
+
+    .panel h3,
+    .role h3,
+    .project h3 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+    }
+
+    .panel p,
+    .role p,
+    .project p {
+      color: var(--muted);
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border: 1px solid var(--soft-line);
+      border-radius: 999px;
+      background: var(--chip);
+      color: #34302b;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .role {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 28px;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--soft-line);
+    }
+
+    .role:first-child { padding-top: 0; }
+
+    .date {
+      color: var(--accent-dark);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .role ul {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .role li {
+      position: relative;
+      padding-left: 22px;
+      color: #34302b;
+    }
+
+    .role li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 8px;
+      height: 1px;
+      background: var(--ink);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project {
+      min-height: 320px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+    }
+
+    .project-index {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .project-links a {
+      color: var(--accent-dark);
+      font-weight: 760;
+      font-size: 14px;
+    }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .credential-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: #34302b;
+    }
+
+    .credential-list span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .footer {
+      padding: 72px 0 38px;
+    }
+
+    .footer-card {
+      border: 1px solid var(--ink);
+      border-radius: 34px;
+      padding: clamp(28px, 5vw, 54px);
+      background: #111;
+      color: var(--paper);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .footer-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -160px;
+      bottom: -180px;
+      border-radius: 999px;
+      background: rgba(201, 111, 50, 0.42);
+      filter: blur(10px);
+    }
+
+    .footer-card h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(42px, 7vw, 94px);
+      line-height: 0.92;
+      letter-spacing: -0.078em;
+    }
+
+    .footer-card p,
+    .footer-actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-card p {
+      max-width: 620px;
+      color: rgba(255, 250, 240, 0.74);
+      font-size: 18px;
+      margin: 24px 0 0;
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .footer-actions .button {
+      border-color: rgba(255, 250, 240, 0.45);
+      color: var(--paper);
+    }
+
+    .footer-actions .button.primary {
+      background: var(--paper);
+      color: var(--ink);
+      border-color: var(--paper);
+    }
+
+    .fineprint {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidecard,
+      .section-title {
+        position: static;
+      }
+
+      .sidecard {
+        align-self: auto;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 24px, var(--max)); }
+      .nav { min-height: 66px; }
+      .navlinks { display: none; }
+      .hero { padding: 48px 0 42px; }
+      .split,
+      .projects,
+      .credentials {
+        grid-template-columns: 1fr;
+      }
+      .role {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .project { min-height: auto; }
+      .fineprint { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="shell nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Olha Sashchuk home">
+        <span class="mark">OS</span>
+        <span>Olha Sashchuk</span>
+      </a>
+      <div class="navlinks" aria-label="Page sections">
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="shell hero" aria-labelledby="intro-title">
+      <div>
+        <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Full-stack developer · Copenhagen</div>
+        <h1 id="intro-title">Building reliable products for real workflows.</h1>
+        <p class="hero-copy">
+          I’m a TypeScript-focused full-stack developer who ships end-to-end features across frontend, APIs, and databases. I’m especially motivated by products where data correctness, trust, and user experience matter.
+        </p>
+        <div class="hero-actions" aria-label="Primary actions">
+          <a class="button primary" href="mailto:olha.sashchuk@gmail.com">Get in touch</a>
+          <a class="button" href="https://github.com/olhasashchuk" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="button" href="https://www.linkedin.com/in/olha-sashchuk" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <aside class="sidecard" aria-label="Professional snapshot">
+        <div class="availability">
+          <div>
+            <div class="meta-label">Current role</div>
+            <p class="meta-value">Software Developer, Fysiofresh</p>
+          </div>
+          <div>
+            <div class="meta-label">Focus</div>
+            <p class="meta-value">Production TypeScript systems, admin tools, integrations, and safe delivery.</p>
+          </div>
+          <div>
+            <div class="meta-label">Background edge</div>
+            <p class="meta-value">Law & finance experience for risk-sensitive product work.</p>
+          </div>
+        </div>
+        <div class="contact-list">
+          <a href="mailto:olha.sashchuk@gmail.com"><span>Email</span><strong>olha.sashchuk@gmail.com</strong></a>
+          <a href="https://github.com/olhasashchuk" target="_blank" rel="noreferrer"><span>GitHub</span><strong>@olhasashchuk</strong></a>
+          <a href="https://www.linkedin.com/in/olha-sashchuk" target="_blank" rel="noreferrer"><span>LinkedIn</span><strong>/in/olha-sashchuk</strong></a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="shell section" id="about" aria-labelledby="about-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="about-title">About</h2>
+        <div>
+          <p class="lead">
+            I combine hands-on engineering with a structured, compliance-aware way of thinking.
+            <span class="muted">That means clear contracts, careful edge-case handling, and readable delivery.</span>
+          </p>
+          <div class="split">
+            <article class="panel">
+              <h3>End-to-end ownership</h3>
+              <p>From specification and design review through implementation, testing, release, and post-release support.</p>
+            </article>
+            <article class="panel">
+              <h3>Trustworthy systems</h3>
+              <p>Strengthening request handling, preventing duplicate actions, improving errors, and reducing edge-case failures.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="work" aria-labelledby="work-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="work-title">Experience</h2>
+        <div class="timeline">
+          <article class="role">
+            <div class="date">Feb 2025 — Present</div>
+            <div>
+              <h3>Software Developer · Fysiofresh</h3>
+              <p>Copenhagen, Denmark · Full-stack</p>
+              <ul>
+                <li>Deliver production-ready features in a large TypeScript monorepo across UI, API, and database layers.</li>
+                <li>Build internal admin tools with tables, search, filters, pagination, and clear UI states.</li>
+                <li>Integrate billing and invoicing flows with Frisbii and Dinero using clear contracts and predictable behavior.</li>
+                <li>Implement notification workflows with database trigger/queue logic, templates, Twilio/SendGrid delivery, retry limits, and safer failure handling.</li>
+                <li>Refactor complex logic into reusable components and composables, improve type safety, and add tests for key flows.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="date">2016 — 2023</div>
+            <div>
+              <h3>Investment Fund Manager & Legal Consultant · Self-employed</h3>
+              <p>Kyiv, Ukraine / Remote</p>
+              <ul>
+                <li>Managed legal, financial, and compliance projects end-to-end.</li>
+                <li>Worked with regulatory documentation, approvals, stakeholders, and risk-sensitive processes.</li>
+                <li>Set up and administered investment funds and related legal structures.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role">
+            <div class="date">2009 — 2016</div>
+            <div>
+              <h3>Head of Corporate Department · LLC Asset Management Company Elliott</h3>
+              <p>Kyiv, Ukraine</p>
+              <ul>
+                <li>Led corporate operations and cross-team coordination.</li>
+                <li>Administered 20+ investment funds and maintained corporate documentation.</li>
+                <li>Managed licensing compliance, legal reviews, controls, and approvals.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="projects" aria-labelledby="projects-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <div>
+              <div class="project-top">
+                <h3>Application Hub</h3>
+                <span class="project-index">01</span>
+              </div>
+              <p>Full-stack job tracking app with authentication, REST API, filters, and server routing.</p>
+              <div class="stack" aria-label="Application Hub technologies">
+                <span class="chip">React</span>
+                <span class="chip">Next.js</span>
+                <span class="chip">Express.js</span>
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">MUI</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://application-hub.onrender.com" target="_blank" rel="noreferrer">Live demo ↗</a>
+              <a href="https://github.com/olhasashchuk/application-hub" target="_blank" rel="noreferrer">Source ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div>
+              <div class="project-top">
+                <h3>Meal-sharing Yellow Kitchen</h3>
+                <span class="project-index">02</span>
+              </div>
+              <p>Meal booking application with CRUD features, booking logic, and responsive UI.</p>
+              <div class="stack" aria-label="Meal-sharing Yellow Kitchen technologies">
+                <span class="chip">React</span>
+                <span class="chip">Next.js</span>
+                <span class="chip">Express.js</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">MUI</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a href="https://meal-sharing-yellow-kitchen.vercel.app" target="_blank" rel="noreferrer">Live demo ↗</a>
+              <a href="https://github.com/olhasashchuk/meal-sharing-yellow-kitchen" target="_blank" rel="noreferrer">Source ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="skills" aria-labelledby="skills-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <div>
+          <p class="lead">Modern web stack, practical testing habits, and AI-assisted development.</p>
+          <div class="split">
+            <article class="panel">
+              <h3>Engineering stack</h3>
+              <div class="stack">
+                <span class="chip">TypeScript</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">Vue 3</span>
+                <span class="chip">React</span>
+                <span class="chip">Next.js</span>
+                <span class="chip">MUI</span>
+                <span class="chip">Tailwind</span>
+                <span class="chip">Vuetify</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">Express</span>
+                <span class="chip">NestJS</span>
+              </div>
+            </article>
+            <article class="panel">
+              <h3>Data, quality & tools</h3>
+              <div class="stack">
+                <span class="chip">PostgreSQL</span>
+                <span class="chip">Supabase</span>
+                <span class="chip">MySQL</span>
+                <span class="chip">Drizzle</span>
+                <span class="chip">Vitest</span>
+                <span class="chip">Git</span>
+                <span class="chip">OpenAPI</span>
+                <span class="chip">TanStack Query</span>
+                <span class="chip">Figma</span>
+                <span class="chip">ChatGPT</span>
+                <span class="chip">Cursor</span>
+                <span class="chip">GitHub Copilot</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shell section" id="education" aria-labelledby="education-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="education-title">Education</h2>
+        <div class="credentials">
+          <article class="panel">
+            <h3>Training</h3>
+            <ul class="credential-list">
+              <li>HackYourFuture Denmark <span>Full-Stack Development · 2024</span></li>
+              <li>Hillel IT School <span>Front-End Development · 2023–2024</span></li>
+              <li>ReDI School Denmark <span>Introduction to Front-End Development · 2023</span></li>
+              <li>Donetsk National University <span>Master’s Degree in Accounting and Auditing · 2003–2008</span></li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Certifications & community</h3>
+            <ul class="credential-list">
+              <li>Azure Cloud Fundamentals AZ-900 Masterclass <span>2025</span></li>
+              <li>Node.js & NestJS, TypeScript, Quality Assurance <span>Hillel IT School</span></li>
+              <li>Volunteer Teacher <span>ReDI School & HackYourFuture Denmark · 2025</span></li>
+              <li>Languages <span>English fluent · Danish module 5 · Ukrainian native · Russian fluent</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell footer" id="contact">
+    <div class="footer-card">
+      <h2>Let’s build something reliable.</h2>
+      <p>I’m interested in full-stack product work where thoughtful UX, dependable data, and maintainable systems all matter.</p>
+      <div class="footer-actions">
+        <a class="button primary" href="mailto:olha.sashchuk@gmail.com">Email Olha</a>
+        <a class="button" href="https://github.com/olhasashchuk" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button" href="https://www.linkedin.com/in/olha-sashchuk" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="fineprint">
+      <span>© <span id="year">2026</span> Olha Sashchuk</span>
+      <span>Designed as a self-contained GitHub Pages entry point.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Olha Sashchuk",
+      "jobTitle": "Full-Stack Developer",
+      "email": "mailto:olha.sashchuk@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Frederiksberg",
+        "addressCountry": "Denmark"
+      },
+      "url": "https://github.com/olhasashchuk",
+      "sameAs": [
+        "https://github.com/olhasashchuk",
+        "https://www.linkedin.com/in/olha-sashchuk"
+      ],
+      "knowsAbout": [
+        "TypeScript",
+        "JavaScript",
+        "Vue 3",
+        "React",
+        "Next.js",
+        "Node.js",
+        "PostgreSQL",
+        "Supabase",
+        "Testing",
+        "Full-stack development"
+      ]
+    }
+  </script>
+</body>
+</html>
